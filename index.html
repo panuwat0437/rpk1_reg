@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <title>ประกาศผลการเรียน ปีการศึกษา 2565 โรงเรียนราชประชานุเคราะห์ ๑</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      /* devanagari */
+      body {
+        font-family: "Kanit", sans-serif;
+      }
+      * {
+        font-family: "Kanit", sans-serif;
+      }
+      #loading {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        display: block;
+        opacity: 0.7;
+        background-color: #fff;
+        z-index: 99;
+        text-align: center;
+      }
+
+      #loading-image {
+        position:fixed;
+      top:50%;
+left:50%;
+margin-left:-100px;
+margin-top:-50px;
+        z-index: 100;
+      }
+
+    </style>
+    <link href="css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <center><div class="alert alert-primary" role="alert" id="uname"></div> </center>
+        <p><div id="test1"></div></p>
+        <p><div id="test2"></div></p>
+        <p><div id="test3"></div></p>
+        <p><div id="test4"></div></p>
+        <p><div id="test5"></div></p>
+        <p><div id="test6"></div></p>
+        <p><div id="test7"></div></p>
+        <p><div id="test8"></div></p>
+        <p><div id="test9"></div></p>
+        <p><div id="test10"></div></p>
+        <p><div id="test11"></div></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ออก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div id="loading">
+      <img id="loading-image" src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="Loading..." />
+    </div>
+
+    <div class="s130">
+      <form>
+        
+        <center>
+            <image  src="logo2.png" width="200px" style="margin-top:2px"></image>
+           <h3><b>ประกาศผลการเรียน ปีการศึกษา 2565</b></h3>  <h4 style="margin-bottom:10px;">โรงเรียนราชประชานุเคราะห์ ๑</h4></center>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                ></path>
+              </svg>
+            </div>
+            <input
+              id="txtid"
+              type="number"
+              placeholder="เลขบัตรประชาชนนักเรียน 13 หลัก"
+            />
+          </div>
+          <div class="input-field second-wrap">
+            <button class="btn-search searchok" type="button">ตรวจสอบ</button>
+          </div>
+        </div>
+       <center><span class="info">โรงเรียนราชประชานุเคราะห์ ๑</span></center> 
+      </form>
+
+    </div>
+
+   
+
+
+    <script>
+  
+      $('#loading').hide();
+
+        $(document).on('click','.printcertificate',function(){
+          txtid = $(this).attr("id");
+          makecertificate(txtid);
+        });
+
+        $(document).on('click','.searchok',function(){
+           txtid = document.getElementById('txtid').value;
+           if(txtid.length < 6){
+            document.getElementById('txtid').focus();
+           }else{
+           makeGetRequest(txtid);
+           $('#loading').show();
+           }
+        });
+       
+        async function makecertificate(txtid) {
+          window.location.href = "certificate/index.php?txtid="+txtid;
+        }
+        async function makeGetRequest(txtid) {
+          let res = await axios.get('https://script.google.com/macros/s/AKfycbzmCFiWUJdHsSQ-_OJvlJwix4YHIRD1Np3x7IJUfZV9B-567PTmGmvEMBSudgu3l1Rg5w/exec?sheet_name=data&action=api&id='+txtid);
+          let data = res.data;
+          var data2 = data.split(",");
+          document.getElementById('uname').innerHTML = data2[2]+'<div style="color:red">(ลำดับที่ได้  '+data2[14]+' คิดเป็นเปอร์เซ็น '+data2[15]+'%) </div>';
+          document.getElementById('test1').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- ภาษาไทย</td><td>'+data2[3]+'/100  คะแนน</td></tr></table></div>' ;
+          document.getElementById('test2').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[4]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test3').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- สุขศึกษาและพละศึกษา</td><td>'+data2[5]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test4').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[6]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test5').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ศิลปะ</td><td>'+data2[7]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test6').innerHTML = '<div class="card"><table class=""><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[8]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test7').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- การงานอาชีพ</td><td>'+data2[9]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test8').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษ</td><td>'+data2[10]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test9').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- หน้าที่พลเมือง</td><td>'+data2[11]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test10').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษเพื่อการสื่อสาร</td><td>'+data2[12]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('test11').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาจีนเพื่อการสื่อสาร</td><td>'+data2[13]+'/100 คะแนน</td></tr></table></div>' ;
+  
+          if(data == "nodata"){
+            alert('ไม่พบรายชื่อนักเรียนที่ต้องการ !');
+          }else{
+            $('#myModal').modal('show');
+          }
+         
+      
+          $('#loading').hide();
+        }
+
+    </script>
+  </body>
+</html>
