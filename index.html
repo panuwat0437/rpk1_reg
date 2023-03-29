@@ -167,11 +167,14 @@ margin-top:-50px;
        
         async function makecertificate(txtid) {
           window.location.href = "certificate/index.php?txtid="+txtid;
-        }
+        } 
         async function makeGetRequest(txtid) {
           let res = await axios.get('https://script.google.com/macros/s/AKfycbzmCFiWUJdHsSQ-_OJvlJwix4YHIRD1Np3x7IJUfZV9B-567PTmGmvEMBSudgu3l1Rg5w/exec?sheet_name=data&action=api&id='+txtid);
           let data = res.data;
           var data2 = data.split(",");
+          if(data == "nodata"){
+            alert('ไม่พบรายชื่อนักเรียนที่ต้องการ !');
+          }else{
           document.getElementById('uname').innerHTML = 
           '<div style="color:black">'+data2[2]+' เลขที่ '+data2[3]+' ชั้น '+data2[4]+'</div><div style="color:red"> (เกรดเฉลี่ยที่ได้ '+grade(data2[18])+' ลำดับที่ได้  '+data2[19]+' ) </div>';
           document.getElementById('test1').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- ภาษาไทย</td><td>'+data2[5]+'/100  คะแนน</td> <td>เกรด '+grade(data2[5])+'</td></tr></table></div>' ;
@@ -186,9 +189,7 @@ margin-top:-50px;
           document.getElementById('test10').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษเพื่อการสื่อสาร</td><td>'+data2[14]+'/100 คะแนน</td><td>เกรด '+grade(data2[14])+'</td></tr></table></div>' ;
           document.getElementById('test11').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาจีนเพื่อการสื่อสาร</td><td>'+data2[15]+'/100 คะแนน</td><td>เกรด '+grade(data2[15])+'</td></tr></table></div>' ;
   
-          if(data == "nodata"){
-            alert('ไม่พบรายชื่อนักเรียนที่ต้องการ !');
-          }else{
+         
             $('#myModal').modal('show');
           }
          
