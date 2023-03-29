@@ -117,6 +117,37 @@ margin-top:-50px;
 
     <script>
   
+      function grade(score){
+        if((score>100)||(score<0)) {    
+          scorex = "ไม่สามารถคำนวนเกรดได้";
+      }
+      else if ((score>=79.5)&&(score<=100)) {    
+         scorex = "4";
+      }
+       else if ((score>=74.5)&&(score<=79.4)) {    
+         scorex = "3.5";
+      }
+       else if ((score>=69.5)&&(score<=74.4)) {       
+        scorex = "3";
+      }
+       else if ((score>=64.5)&&(score<=69.4)) {
+        scorex = "2.5";
+      }
+       else if ((score>=59.5)&&(score<=64.4)) {    
+        scorex = "2";
+      }
+       else if ((score>=54.5)&&(score=59.4)) {            
+        scorex = "1.5";
+      }
+       else if ((score>=49.5)&&(score<=54.4)) {       
+        scorex = "1";
+      }
+       else if (score<=49.4) {       
+        scorex = "0";
+      }  
+      return scorex;
+      }
+
       $('#loading').hide();
 
         $(document).on('click','.printcertificate',function(){
@@ -141,18 +172,19 @@ margin-top:-50px;
           let res = await axios.get('https://script.google.com/macros/s/AKfycbzmCFiWUJdHsSQ-_OJvlJwix4YHIRD1Np3x7IJUfZV9B-567PTmGmvEMBSudgu3l1Rg5w/exec?sheet_name=data&action=api&id='+txtid);
           let data = res.data;
           var data2 = data.split(",");
-          document.getElementById('uname').innerHTML = data2[2]+'<div style="color:red">(ลำดับที่ได้  '+data2[14]+' คิดเป็นเปอร์เซ็น '+data2[15]+'%) </div>';
-          document.getElementById('test1').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- ภาษาไทย</td><td>'+data2[3]+'/100  คะแนน</td></tr></table></div>' ;
-          document.getElementById('test2').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[4]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test3').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- สุขศึกษาและพละศึกษา</td><td>'+data2[5]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test4').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[6]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test5').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ศิลปะ</td><td>'+data2[7]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test6').innerHTML = '<div class="card"><table class=""><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[8]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test7').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- การงานอาชีพ</td><td>'+data2[9]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test8').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษ</td><td>'+data2[10]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test9').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- หน้าที่พลเมือง</td><td>'+data2[11]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test10').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษเพื่อการสื่อสาร</td><td>'+data2[12]+'/100 คะแนน</td></tr></table></div>' ;
-          document.getElementById('test11').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาจีนเพื่อการสื่อสาร</td><td>'+data2[13]+'/100 คะแนน</td></tr></table></div>' ;
+          document.getElementById('uname').innerHTML = 
+          '<div style="color:black">'+data2[2]+' เลขที่ '+data2[3]+' ชั้น '+data2[4]+'</div><div style="color:red"> (เกรดเฉลี่ยที่ได้ '+grade(data2[18])+' ลำดับที่ได้  '+data2[19]+' ) </div>';
+          document.getElementById('test1').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- ภาษาไทย</td><td>'+data2[5]+'/100  คะแนน</td> <td>เกรด '+grade(data2[5])+'</td></tr></table></div>' ;
+          document.getElementById('test2').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[6]+'/100 คะแนน</td><td>เกรด '+grade(data2[6])+'</td></tr></table></div>' ;
+          document.getElementById('test3').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- สุขศึกษาและพละศึกษา</td><td>'+data2[7]+'/100 คะแนน</td><td>เกรด '+grade(data2[7])+'</td></tr></table></div>' ;
+          document.getElementById('test4').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[8]+'/100 คะแนน</td><td>เกรด '+grade(data2[8])+'</td></tr></table></div>' ;
+          document.getElementById('test5').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ศิลปะ</td><td>'+data2[9]+'/100 คะแนน</td><td>เกรด '+grade(data2[9])+'</td></tr></table></div>' ;
+          document.getElementById('test6').innerHTML = '<div class="card"><table class=""><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[10]+'/100 คะแนน</td><td>เกรด '+grade(data2[10])+'</td></tr></table></div>' ;
+          document.getElementById('test7').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- การงานอาชีพ</td><td>'+data2[11]+'/100 คะแนน</td><td>เกรด '+grade(data2[11])+'</td></tr></table></div>' ;
+          document.getElementById('test8').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษ</td><td>'+data2[12]+'/100 คะแนน</td><td>เกรด '+grade(data2[12])+'</td></tr></table></div>' ;
+          document.getElementById('test9').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- หน้าที่พลเมือง</td><td>'+data2[13]+'/100 คะแนน</td><td>เกรด '+grade(data2[13])+'</td></tr></table></div>' ;
+          document.getElementById('test10').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษเพื่อการสื่อสาร</td><td>'+data2[14]+'/100 คะแนน</td><td>เกรด '+grade(data2[14])+'</td></tr></table></div>' ;
+          document.getElementById('test11').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาจีนเพื่อการสื่อสาร</td><td>'+data2[15]+'/100 คะแนน</td><td>เกรด '+grade(data2[15])+'</td></tr></table></div>' ;
   
           if(data == "nodata"){
             alert('ไม่พบรายชื่อนักเรียนที่ต้องการ !');
