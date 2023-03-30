@@ -64,6 +64,8 @@ margin-top:-50px;
         <p><div id="test9"></div></p>
         <p><div id="test10"></div></p>
         <p><div id="test11"></div></p>
+        <p><div id="test12"></div></p>
+        <p><div id="test13"></div></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ออก</button>
@@ -178,18 +180,19 @@ margin-top:-50px;
           document.getElementById('uname').innerHTML = 
           '<div style="color:black">'+data2[2]+' เลขที่ '+data2[3]+' ชั้น '+data2[4]+'</div><div style="color:red"> (เกรดเฉลี่ยที่ได้ '+grade(data2[18])+' ลำดับที่ได้  '+data2[19]+' ) </div>';
           document.getElementById('test1').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- ภาษาไทย</td><td>'+data2[5]+'/100  คะแนน</td> <td>เกรด '+grade(data2[5])+'</td></tr></table></div>' ;
-          document.getElementById('test2').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[6]+'/100 คะแนน</td><td>เกรด '+grade(data2[6])+'</td></tr></table></div>' ;
-          document.getElementById('test3').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- สุขศึกษาและพละศึกษา</td><td>'+data2[7]+'/100 คะแนน</td><td>เกรด '+grade(data2[7])+'</td></tr></table></div>' ;
-          document.getElementById('test4').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[8]+'/100 คะแนน</td><td>เกรด '+grade(data2[8])+'</td></tr></table></div>' ;
-          document.getElementById('test5').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ศิลปะ</td><td>'+data2[9]+'/100 คะแนน</td><td>เกรด '+grade(data2[9])+'</td></tr></table></div>' ;
-          document.getElementById('test6').innerHTML = '<div class="card"><table class=""><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[10]+'/100 คะแนน</td><td>เกรด '+grade(data2[10])+'</td></tr></table></div>' ;
-          document.getElementById('test7').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- การงานอาชีพ</td><td>'+data2[11]+'/100 คะแนน</td><td>เกรด '+grade(data2[11])+'</td></tr></table></div>' ;
-          document.getElementById('test8').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษ</td><td>'+data2[12]+'/100 คะแนน</td><td>เกรด '+grade(data2[12])+'</td></tr></table></div>' ;
-          document.getElementById('test9').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- หน้าที่พลเมือง</td><td>'+data2[13]+'/100 คะแนน</td><td>เกรด '+grade(data2[13])+'</td></tr></table></div>' ;
-          document.getElementById('test10').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษเพื่อการสื่อสาร</td><td>'+data2[14]+'/100 คะแนน</td><td>เกรด '+grade(data2[14])+'</td></tr></table></div>' ;
-          document.getElementById('test11').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาจีนเพื่อการสื่อสาร</td><td>'+data2[15]+'/100 คะแนน</td><td>เกรด '+grade(data2[15])+'</td></tr></table></div>' ;
-  
-         
+          document.getElementById('test2').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- คณิตศาสตร์</td><td>'+data2[6]+'/100 คะแนน</td><td>เกรด '+grade(data2[6])+'</td></tr></table></div>' ;
+          document.getElementById('test3').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[7]+'/100 คะแนน</td><td>เกรด '+grade(data2[7])+'</td></tr></table></div>' ;
+          document.getElementById('test4').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- สังคมศึกษาศาสนาและวัฒนธรรม</td><td>'+data2[8]+'/100 คะแนน</td><td>เกรด '+grade(data2[8])+'</td></tr></table></div>' ;
+          document.getElementById('test5').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ประวัติศาสตร์</td><td>'+data2[9]+'/100 คะแนน</td><td>เกรด '+grade(data2[9])+'</td></tr></table></div>' ;
+          document.getElementById('test6').innerHTML = '<div class="card"><table class=""><tr><td width="50%">- สุขศึกษาและพลศึกษา</td><td>'+data2[10]+'/100 คะแนน</td><td>เกรด '+grade(data2[10])+'</td></tr></table></div>' ;
+          document.getElementById('test7').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ศิลปะ</td><td>'+data2[11]+'/100 คะแนน</td><td>เกรด '+grade(data2[11])+'</td></tr></table></div>' ;
+          document.getElementById('test8').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- การงานอาชีพ</td><td>'+data2[12]+'/100 คะแนน</td><td>เกรด '+grade(data2[12])+'</td></tr></table></div>' ;
+          document.getElementById('test9').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษ</td><td>'+data2[13]+'/100 คะแนน</td><td>เกรด '+grade(data2[13])+'</td></tr></table></div>' ;
+          document.getElementById('test10').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- หน้าที่พลเมือง</td><td>'+data2[14]+'/100 คะแนน</td><td>เกรด '+grade(data2[14])+'</td></tr></table></div>' ;
+          document.getElementById('test11').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาอังกฤษเพื่อการสื่อสาร</td><td>'+data2[15]+'/100 คะแนน</td><td>เกรด '+grade(data2[15])+'</td></tr></table></div>' ;
+          document.getElementById('test12').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- ภาษาจีนเพื่อการสื่อสาร</td><td>'+data2[16]+'/100 คะแนน</td><td>เกรด '+grade(data2[16])+'</td></tr></table></div>' ;
+          document.getElementById('test13').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาการคำนวณ</td><td>'+data2[17]+'/100 คะแนน</td><td>เกรด '+grade(data2[17])+'</td></tr></table></div>' ;
+
             $('#myModal').modal('show');
           }
          
