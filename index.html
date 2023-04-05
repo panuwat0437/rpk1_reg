@@ -178,7 +178,7 @@ margin-top:-50px;
             alert('ไม่พบรายชื่อนักเรียนที่ต้องการ !');
           }else{
           document.getElementById('uname').innerHTML = 
-          '<div style="color:black">'+data2[2]+' เลขที่ '+data2[3]+' ชั้น '+data2[4]+'</div><div style="color:red"> (เกรดเฉลี่ยที่ได้ '+grade(data2[18])+' ลำดับที่ได้  '+data2[19]+' ) </div>';
+          '<div style="color:black">'+data2[2]+' เลขที่ '+data2[3]+' ชั้น '+data2[4]+'</div><div style="color:red"> (เกรดเฉลี่ยที่ได้ '+data2[18]+' ลำดับที่ได้  '+data2[19]+' ) </div>';
           document.getElementById('test1').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- ภาษาไทย</td><td>'+data2[5]+'/100  คะแนน</td> <td>เกรด '+grade(data2[5])+'</td></tr></table></div>' ;
           document.getElementById('test2').innerHTML = '<div class="card"><table class=" "><tr><td width="50%">- คณิตศาสตร์</td><td>'+data2[6]+'/100 คะแนน</td><td>เกรด '+grade(data2[6])+'</td></tr></table></div>' ;
           document.getElementById('test3').innerHTML = '<div class="card"><table class="  "><tr><td width="50%">- วิทยาศาสตร์</td><td>'+data2[7]+'/100 คะแนน</td><td>เกรด '+grade(data2[7])+'</td></tr></table></div>' ;
